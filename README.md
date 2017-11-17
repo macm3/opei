@@ -4,7 +4,10 @@ The project must be developed under the `dev` branch. `master` branch is used on
 
 ### Dependencies
 
-In order to manage project dependencies, you will need first to install [Node.js](https://nodejs.org/en/).
+In order to manage project dependencies, you will need first to install [Node.js](https://nodejs.org/en/). Then, run
+* `npm install`
+
+To install all the project dependencies, such as UI frameworks and React.
 
 ### Development
 
