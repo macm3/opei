@@ -1,8 +1,8 @@
 ![](http://res.cloudinary.com/dkbuneg9h/image/upload/v1492117226/Prepare-se_kakyii.png)
 
-### Dependencies
-
 The project must be developed under the `dev` branch. `master` branch is used only for publishing the website on the web under production enviroment.
+
+### Dependencies
 
 In order to manage project dependencies, you will need first to install [Node.js](https://nodejs.org/en/).
 
@@ -23,5 +23,9 @@ The full website will be ready for deployment under the `build/` folder.
 ### Publishing
 
 To publish the website on the web, first, create a production version of it using the step above, and then copy the full content of `build/` folder to the `master` branch.
+
+### UI Framework
+
+All the website design is built along with [Semantic UI React](https://react.semantic-ui.com/introduction). You can see the docs in order to learn how to construct new components.
 
 
