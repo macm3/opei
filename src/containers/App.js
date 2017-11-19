@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import logo from './../images/logo.svg';
-import About from './About';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from './Home';
+import Navbar from './../components/Navbar';
 
-
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/' component={About}/>
-        </Switch>
-      </BrowserRouter>
+      <div>
+        <Navbar>
+          <BrowserRouter>
+            <Switch>
+              <Route exact path='/' component={Home}/>
+            </Switch>
+          </BrowserRouter>
+        </Navbar>
+      </div>
     );
   }
 }
-
-export default App;
