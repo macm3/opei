@@ -1,6 +1,6 @@
 import _ from "lodash";
+import './Navbar.css';
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
 import {
   Container,
   Icon,
@@ -51,18 +51,18 @@ const NavBarMobile = ({
 
 const NavBarDesktop = ({ leftItems, rightItems }) => (
   <Menu fixed="top" inverted>
-		<Menu.Item as="a" href="/">
+		<Menu.Item href="/">
 			<Image size="tiny" src="http://res.cloudinary.com/dkbuneg9h/image/upload/v1494354222/ss_wjjd8u.png" />
     </Menu.Item>
-  		{_.map(leftItems, item => <Menu.Item {...item}></Menu.Item>)}
+  		{_.map(leftItems, item => <Menu.Item {...item}/>)}
     <Menu.Menu position="right">
-      {_.map(rightItems, item => <a href={item.link}><Menu.Item {...item} /></a>)}
+      {_.map(rightItems, item => <Menu.Item {...item} />)}
     </Menu.Menu>
   </Menu>
 );
 
-const NavBarChildren = ({ children }) => (
-  <Container style={{ marginTop: "5em" }}>{children}</Container>
+const NavBarChildren = ({ clas, children }) => (
+  <Container fluid className={"inv-lat-marg "+clas} style={{marginTop: "4em"}}>{children}</Container>
 );
 
 export default class Navbar extends Component {
@@ -81,13 +81,13 @@ export default class Navbar extends Component {
 
   render() {
 		const leftItems = [
-			{ as: 'a', content:'Sobre', name:'about', href: 'sobre'},		
-			{ as: 'a', content:'Regulamento', name:'rules', href: 'regulamento'},			
-			{ as: 'a', content:'Calendário', name:'dates', href: 'calendario'},			
-			{ as: 'a', content:'Premiações', name:'winners', href: 'premiacoes'},			
-			{ as: 'a', content:'Material Didático', name:'learn', href: 'material-didatico'},			
-			{ as: 'a', content:'Divulgação', name:'share', href: 'divulgacao'},			
-			{ as: 'a', content:'FAQ', name:'faq', href: 'faq'}	
+			{ key: 'about', content:'Sobre', name:'about', href: 'sobre'},		
+			{ key: 'rules', content:'Regulamento', name:'rules', href: 'regulamento'},			
+			{ key: 'dates', content:'Calendário', name:'dates', href: 'calendario'},			
+			{ key: 'winners', content:'Premiações', name:'winners', href: 'premiacoes'},			
+			{ key: 'learn', content:'Material Didático', name:'learn', href: 'material-didatico'},			
+			{ key: 'share', content:'Divulgação', name:'share', href: 'divulgacao'},			
+			{ key: 'faq', content:'FAQ', name:'faq', href: 'faq'}	
 		];
 		const rightItems = [];
     const { children } = this.props;
@@ -103,12 +103,12 @@ export default class Navbar extends Component {
             rightItems={rightItems}
             visible={visible}
           >
-            <NavBarChildren>{children}</NavBarChildren>
+            <NavBarChildren clas='mobile'>{children}</NavBarChildren>
           </NavBarMobile>
         </Responsive>
         <Responsive minWidth={Responsive.onlyTablet.minWidth}>
           <NavBarDesktop leftItems={leftItems} rightItems={rightItems} />
-          <NavBarChildren>{children}</NavBarChildren>
+          <NavBarChildren clas='desktop'>{children}</NavBarChildren>
         </Responsive>
       </div>
     );
