@@ -7,13 +7,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar>
-          <BrowserRouter>
-            <Switch>
-              <Route exact path='/' component={Home}/>
-            </Switch>
-          </BrowserRouter>
-        </Navbar>
+        <Navbar/>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
