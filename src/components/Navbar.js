@@ -1,4 +1,3 @@
-import _ from "lodash";
 import './Navbar.css';
 import React, { Component } from "react";
 import {
@@ -7,15 +6,14 @@ import {
   Image,
   Menu,
   Sidebar,
-  Responsive
+  Responsive,
+  Dropdown
 } from "semantic-ui-react";
 
 const NavBarMobile = ({
   children,
-  leftItems,
   onPusherClick,
   onToggle,
-  rightItems,
   visible
 }) => (
   <Sidebar.Pushable>
@@ -24,10 +22,16 @@ const NavBarMobile = ({
       animation="overlay"
       icon="labeled"
       inverted
-      items={leftItems}
       vertical
       visible={visible}
-    />
+    >
+      <Menu.Item content="Sobre" href="/sobre"/>
+      <Menu.Item content="Como Participar" href="/como-participar"/>
+      <Menu.Item content='Premiações' name='winners' href='/premiacoes'/>
+      <Menu.Item content='Material Didático' name='learn' href='/material-didatico'/>
+      <Menu.Item content='Divulgação' name='share' href='/divulgacao'/>
+      <Menu.Item content='FAQ' name='faq' href='/faq'/>
+    </Sidebar>
     <Sidebar.Pusher
       dimmed={visible}
       onClick={onPusherClick}
@@ -37,27 +41,37 @@ const NavBarMobile = ({
 				<Menu.Item onClick={onToggle}>
           <Icon name="sidebar" />
         </Menu.Item>
-				<Menu.Item as="a" href="/">
+				<Menu.Item href="/">
 					<Image size="tiny" src="http://res.cloudinary.com/dkbuneg9h/image/upload/v1494354222/ss_wjjd8u.png" />
     		</Menu.Item>
-        <Menu.Menu position="right">
-          {_.map(rightItems, item => <a href={item.link}><Menu.Item {...item} /></a>)}
-        </Menu.Menu>
       </Menu>
       {children}
     </Sidebar.Pusher>
   </Sidebar.Pushable>
 );
 
-const NavBarDesktop = ({ leftItems, rightItems }) => (
+const NavBarDesktop = () => (
   <Menu fixed="top" inverted>
 		<Menu.Item href="/">
 			<Image size="tiny" src="http://res.cloudinary.com/dkbuneg9h/image/upload/v1494354222/ss_wjjd8u.png" />
     </Menu.Item>
-  		{_.map(leftItems, item => <Menu.Item {...item}/>)}
-    <Menu.Menu position="right">
-      {_.map(rightItems, item => <Menu.Item {...item} />)}
-    </Menu.Menu>
+    <Dropdown text='Sobre' pointing='down' className='link item'>
+      <Dropdown.Menu>
+        <Dropdown.Item href="/sobre#motivacao">Motivação</Dropdown.Item>
+        <Dropdown.Item href="/sobre#historia">História</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+    <Dropdown text='Como Participar' pointing='down' className='link item'>
+      <Dropdown.Menu>
+        <Dropdown.Item href="/como-participar#regulamento">Regulamento</Dropdown.Item>
+        <Dropdown.Item href="/como-participar#categorias">Categorias</Dropdown.Item>
+        <Dropdown.Item href="/como-participar#calendario">Calendário</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+    <Menu.Item content='Premiações' name='winners' href='/premiacoes'/>
+    <Menu.Item content='Material Didático' name='learn' href='/material-didatico'/>
+    <Menu.Item content='Divulgação' name='share' href='/divulgacao'/>
+    <Menu.Item content='FAQ' name='faq' href='/faq'/>
   </Menu>
 );
 
@@ -80,16 +94,6 @@ export default class Navbar extends Component {
   handleToggle = () => this.setState({ visible: !this.state.visible });
 
   render() {
-		const leftItems = [
-			{ key: 'about', content:'Sobre', name:'about', href: 'sobre'},		
-			{ key: 'rules', content:'Regulamento', name:'rules', href: 'regulamento'},			
-			{ key: 'dates', content:'Calendário', name:'dates', href: 'calendario'},			
-			{ key: 'winners', content:'Premiações', name:'winners', href: 'premiacoes'},			
-			{ key: 'learn', content:'Material Didático', name:'learn', href: 'material-didatico'},			
-			{ key: 'share', content:'Divulgação', name:'share', href: 'divulgacao'},			
-			{ key: 'faq', content:'FAQ', name:'faq', href: 'faq'}	
-		];
-		const rightItems = [];
     const { children } = this.props;
     const { visible } = this.state;
 
@@ -97,17 +101,15 @@ export default class Navbar extends Component {
       <div>
         <Responsive {...Responsive.onlyMobile}>
           <NavBarMobile
-            leftItems={leftItems}
             onPusherClick={this.handlePusher}
             onToggle={this.handleToggle}
-            rightItems={rightItems}
             visible={visible}
           >
             <NavBarChildren clas='mobile'>{children}</NavBarChildren>
           </NavBarMobile>
         </Responsive>
         <Responsive minWidth={Responsive.onlyTablet.minWidth}>
-          <NavBarDesktop leftItems={leftItems} rightItems={rightItems} />
+          <NavBarDesktop />
           <NavBarChildren clas='desktop'>{children}</NavBarChildren>
         </Responsive>
       </div>
