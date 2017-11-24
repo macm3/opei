@@ -55,12 +55,7 @@ const NavBarDesktop = () => (
 		<Menu.Item href="/">
 			<Image size="tiny" src="http://res.cloudinary.com/dkbuneg9h/image/upload/v1494354222/ss_wjjd8u.png" />
     </Menu.Item>
-    <Dropdown text='Sobre' pointing='down' className='link item'>
-      <Dropdown.Menu>
-        <Dropdown.Item href="/sobre#motivacao">Motivação</Dropdown.Item>
-        <Dropdown.Item href="/sobre#historia">História</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+    <Menu.Item content='Sobre' href="/sobre" name="about"/>
     <Dropdown text='Como Participar' pointing='down' className='link item'>
       <Dropdown.Menu>
         <Dropdown.Item href="/como-participar#regulamento">Regulamento</Dropdown.Item>

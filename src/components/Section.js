@@ -7,7 +7,7 @@ export default class Section extends Component{
             <Container text style={{marginTop: '5em', fontSize: '18px'}}>
                 <Header size="huge" dividing textAlign="center">
                     {this.props.title}
-                  <Icon name={this.props.icon} color="grey"/>
+                    <Icon name={this.props.icon} color="grey"/>
                 </Header>
                 <br/><br/>
                 {this.props.children}
