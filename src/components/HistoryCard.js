@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Reveal} from 'semantic-ui-react';
+import {Card} from 'semantic-ui-react';
 
 export default class HistoryCard extends Component{
     render(){

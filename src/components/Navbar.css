@@ -8,6 +8,5 @@
 .ui.menu .ui.dropdown .menu>.item{
     color: white !important;
     background: rgba(0,0,0,.87) !important;
-    stroke: white !important;
     stroke-width: 0.25px !important;
 }

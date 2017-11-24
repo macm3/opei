@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Embed, Grid} from 'semantic-ui-react';
+import {Image, Embed} from 'semantic-ui-react';
 import HistoryFeed from './../components/HistoryFeed';
 import Section from './../components/Section';
 

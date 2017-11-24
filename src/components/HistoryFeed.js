@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import HistoryCard from './HistoryCard';
-import {Grid, Icon, Card, Header} from 'semantic-ui-react';
+import {Grid, Icon} from 'semantic-ui-react';
 
 export default class HistoryFeed extends Component{
     render(){
