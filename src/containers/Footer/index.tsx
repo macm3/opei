@@ -60,12 +60,12 @@ class Footer extends React.Component {
                             </ul> 
                         </div>
                         <div id="something" className="w3-col w3-container m4 l4 ">
-                            <div className="mui--text-title">Alguma coisa</div> 
+                            {/* <div className="mui--text-title">Alguma coisa</div> 
                             <ul>
                                 <li>
                                     <p>Não sei o que colocar</p>
                                 </li>
-                            </ul> 
+                            </ul>  */}
                         </div>
                     </div>
                     {/* <Divider style={{marginLeft: '10%', marginRight: '10%'}}/> */}

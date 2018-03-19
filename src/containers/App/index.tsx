@@ -42,7 +42,18 @@ class App extends React.Component {
                     </AppBar>
                 </MuiThemeProvider>
                 <Carousel />
-                <About />
+                {/* <Card 
+                    style={{
+                        width: '70%',
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
+                        marginTop: '20px',
+                        marginBottom: '20px'
+                    }}
+                > */}
+                    <About />
+                {/* </Card> */}
+                
                 <Events />
                 <Footer />
             </div>

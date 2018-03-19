@@ -24,6 +24,8 @@ class About extends React.Component {
                 <div className="intrinsic-container intrinsic-container-16x9">
                     <iframe 
                         src="https://www.youtube.com/embed/7ubYlXGk7KY"
+                        allowFullScreen={true}
+                        frameBorder={0}
                     />
                 </div>
             </div>
