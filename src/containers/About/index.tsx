@@ -21,7 +21,11 @@ class About extends React.Component {
                         vocações na área de computação.
                     </h2>
                 </div>
-                
+                <div className="intrinsic-container intrinsic-container-16x9">
+                    <iframe 
+                        src="https://www.youtube.com/embed/7ubYlXGk7KY"
+                    />
+                </div>
             </div>
         );
     }

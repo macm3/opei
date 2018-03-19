@@ -43,12 +43,6 @@ class App extends React.Component {
                 </MuiThemeProvider>
                 <Carousel />
                 <About />
-                <div className="intrinsic-container intrinsic-container-16x9">
-                    <iframe 
-                        src="https://www.youtube.com/embed/7ubYlXGk7KY"
-                    />
-                    
-                </div>
                 <Events />
                 <Footer />
             </div>
