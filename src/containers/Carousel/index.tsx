@@ -6,6 +6,10 @@ interface S {
     index: number;
 }
 
+interface P {
+    imgs: Array<string>;
+}
+
 const styles: {
     [key: string]: React.CSSProperties;
 } = {
@@ -20,16 +24,17 @@ const styles: {
 
 const logo = require('../../assets/logo.svg');
 
-class Carousel extends React.Component<{}, S> {
-    timerID: NodeJS.Timer;
-    constructor(props: {}, context: {}) {
-        super(props, context);
+class Carousel extends React.Component<P, S> {
+    constructor(props: P) {
+        super(props);
         
         this.state = {
             index: 0,
         };
     }
 
+    timerID: NodeJS.Timer;
+    
     componentDidMount() {
         this.timerID = setInterval(
           () => this.setState({
@@ -43,13 +48,16 @@ class Carousel extends React.Component<{}, S> {
         clearInterval(this.timerID);
       }
 
-    render(): JSX.Element | null | false {
-        const imgs = [
-            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1492117901/opei_2_aayjbd.jpg',
-            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0943_auz3o4.jpg',
-            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0964_bs3zo8.jpg',
-            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_1070_roed5s.jpg',
-        ];
+    render() {
+        // const imgs = [
+        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1492117901/opei_2_aayjbd.jpg',
+        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0943_auz3o4.jpg',
+        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0964_bs3zo8.jpg',
+        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_1070_roed5s.jpg',
+        // ];
+
+        //alert(imgs);
+        const { imgs } = this.props;
 
         return (
             <div>
@@ -67,7 +75,6 @@ class Carousel extends React.Component<{}, S> {
                                     opacity: 0.3,
                                     width: '100%',
                                     height: '600px',
-
                                 }} 
                             />
                         ))}

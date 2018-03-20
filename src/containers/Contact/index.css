@@ -1,0 +1,21 @@
+a {
+    text-decoration: none !important;
+}
+
+a :hover{
+    text-decoration: none !important;
+}
+
+span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    vertical-align: super;
+}
+
+.Contact {
+    text-align: left;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

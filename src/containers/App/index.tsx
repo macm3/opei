@@ -4,6 +4,7 @@ import Carousel from '../../containers/Carousel';
 import About from '../../containers/About';
 import Footer from '../../containers/Footer';
 import Events from '../../containers/Events';
+import Contact from '../../containers/Contact';
 import { AppBar, FlatButton } from 'material-ui';
 import { getMuiTheme, MuiThemeProvider, colors } from 'material-ui/styles';
 
@@ -28,33 +29,40 @@ const styles: {
     }
 };
 
-// const logo = require('../../assets/opeisquare.png');
+const logo = require('../../assets/opeisquare.png');
 
 class App extends React.Component {
     render() {
+        const imgs = [
+            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1492117901/opei_2_aayjbd.jpg',
+            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0943_auz3o4.jpg',
+            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0964_bs3zo8.jpg',
+            'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_1070_roed5s.jpg',
+        ];
         return (
             <div className="App">
                 <MuiThemeProvider muiTheme={getMuiTheme(muitheme)}>
-                    <AppBar showMenuIconButton={false} >
+                    <AppBar 
+                        showMenuIconButton={true} 
+                        style={{
+                            position: 'fixed',
+                        }}
+                        iconElementLeft={
+                            <img src={logo} width={48} height={48}/>}
+                        iconStyleLeft={{
+                            height: '56px',
+                            width: '56px',
+                        }}
+                    >
                         <FlatButton href="#about" label="Sobre" style={styles.buttonStyle}/>
                         <FlatButton href="#events" label="Cronograma" style={styles.buttonStyle} />
                         <FlatButton href="#contact" label="Contato" style={styles.buttonStyle} />
                     </AppBar>
                 </MuiThemeProvider>
-                <Carousel />
-                {/* <Card 
-                    style={{
-                        width: '70%',
-                        marginLeft: 'auto',
-                        marginRight: 'auto',
-                        marginTop: '20px',
-                        marginBottom: '20px'
-                    }}
-                > */}
-                    <About />
-                {/* </Card> */}
-                
+                <Carousel imgs={imgs}/>
+                <About />
                 <Events />
+                <Contact />
                 <Footer />
             </div>
         );

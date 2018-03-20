@@ -1,45 +1,12 @@
 footer {
     background-color: #222;
-    min-height: 160px;
     height: auto;
     transition: margin-left 0.2s;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0px;
-    margin-top: 10px;
-}
-
-li {
-    margin-top: 5px;
-    text-align: left;
-}
-
-.Content {
-    display: flex;
-    flex-direction: row;
-}
-
-.col-4 {
-    flex: 1
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
-
-i.fa {
-    font-size: 2rem;
-}
-
 span {
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.5rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    vertical-align: middle;
+    vertical-align: super;
 }
 
 div.w3-row {
@@ -48,9 +15,4 @@ div.w3-row {
     padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
-}
-
-div.mui--text-title {
-    text-align: left;
-    font-weight: bolder;
 }

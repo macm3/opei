@@ -40,7 +40,8 @@ class Events extends React.Component {
                             backgroundColor="#777"
                             style={{color: 'white', borderRadius: '10px'}}
                             hoverColor="#999"
-                            href="#about"
+                            target="_blank"
+                            href="http://opei.cin.ufpe.br/2018"
                         />
                     </CardActions>
                     </Card>
