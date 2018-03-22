@@ -2,13 +2,13 @@ import * as React from 'react';
 import ViewPager from '../../components/ViewPager';
 import './index.css';
 
-// interface State {
-//     index: number;
-// }
+interface State {
+    index: number;
+}
 
-// interface Props {
-//     imgs: string[];
-// }
+interface Props {
+    imgs: string[];
+}
 
 const styles: {
     [key: string]: React.CSSProperties;
@@ -24,12 +24,10 @@ const styles: {
 
 const logo = require('../../assets/logo.svg');
 
-// tslint:disable-next-line:no-any
-class Carousel extends React.Component<any, any> {
+class Carousel extends React.Component<Props, State> {
     timerID: NodeJS.Timer;
 
-    // tslint:disable-next-line:no-any
-    constructor(props: any, context: any) {
+    constructor(props: Props, context: {}) {
         super(props, context);
         
         this.state = {
@@ -65,7 +63,7 @@ class Carousel extends React.Component<any, any> {
                                     backgroundRepeat: 'no-repeat',
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',
-                                    opacity: 0.3,
+                                    opacity: 0.2,
                                     width: '100%',
                                     height: '600px',
                                 }} 

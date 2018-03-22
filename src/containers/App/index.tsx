@@ -33,11 +33,11 @@ const styles: {
 interface S {
     url: string;
     width: number;
-    height: number;
+    height: number | string;
 }
 
-const logo = require('../../assets/logo.svg');
-const logoSquare = require('../../assets/opeisquare.png');
+const logo = require('../../assets/logo-h.svg');
+const logoSquare = require('../../assets/logosquare.svg');
 
 class App extends React.Component<{}, S> {
     constructor(props: {}) {
@@ -45,15 +45,15 @@ class App extends React.Component<{}, S> {
 
         this.state = {
             url: window.innerWidth < 850 ? logoSquare : logo,
-            width: window.innerWidth < 850 ? 48 : 172,
-            height: 48,
+            width: window.innerWidth < 850 ? 36 : 100,
+            height: 'auto',
         };
     }
 
     updateLogo = () => {
         this.setState({
             url: window.innerWidth < 850 ? logoSquare : logo,
-            width: window.innerWidth < 850 ? 48 : 172,
+            width: window.innerWidth < 850 ? 36 : 100,
         });
     }
 
@@ -84,10 +84,9 @@ class App extends React.Component<{}, S> {
                         iconElementLeft={
                             <img src={this.state.url} width={this.state.width} height={this.state.height}/>}
                         iconStyleLeft={{
-                            height: `url(${this.state.height + 8})`,
+                            height: `url(${Number.parseInt(this.state.height + '') + 8})`,
                             width: `url(${this.state.width + 8})`,
-                            marginTop: 10,
-                            marginBottom: 10,
+                            margin: 'auto auto'
                         }}
                     >
                         <FlatButton href="#about" label="Sobre" style={styles.buttonStyle}/>

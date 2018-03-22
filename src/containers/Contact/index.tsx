@@ -10,7 +10,7 @@ class Contact extends React.Component {
                     <CardTitle>
                             <span 
                                 style={{
-                                    fontWeight: 400,
+                                    fontWeight: 'bold',
                                     fontSize: '1.5rem',
                                     lineHeight: '2rem',
                                     color: '#222',
