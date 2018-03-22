@@ -2,69 +2,62 @@ import * as React from 'react';
 import ViewPager from '../../components/ViewPager';
 import './index.css';
 
-interface S {
-    index: number;
-}
+// interface State {
+//     index: number;
+// }
 
-interface P {
-    imgs: Array<string>;
-}
+// interface Props {
+//     imgs: string[];
+// }
 
 const styles: {
     [key: string]: React.CSSProperties;
 } = {
-    overflow: {
-        overflow: 'hidden',
-        height: 'auto',
-        maxHeight: '600px',
-        backgroundColor: '#333',
-        position: 'relative',
-    }
-};
+        overflow: {
+            overflow: 'hidden',
+            height: 'auto',
+            maxHeight: '600px',
+            backgroundColor: '#333',
+            position: 'relative',
+        }
+    };
 
 const logo = require('../../assets/logo.svg');
 
-class Carousel extends React.Component<P, S> {
-    constructor(props: P) {
-        super(props);
+// tslint:disable-next-line:no-any
+class Carousel extends React.Component<any, any> {
+    timerID: NodeJS.Timer;
+
+    // tslint:disable-next-line:no-any
+    constructor(props: any, context: any) {
+        super(props, context);
         
         this.state = {
             index: 0,
         };
     }
-
-    timerID: NodeJS.Timer;
     
     componentDidMount() {
         this.timerID = setInterval(
           () => this.setState({
-              index: (this.state.index + 1) % 4
+              index: (this.state.index + 1) % this.props.imgs.length
           }),
           3000
         );
-      }
+    }
     
-      componentWillUnmount() {
+    componentWillUnmount() {
         clearInterval(this.timerID);
-      }
+    }
 
-    render() {
-        // const imgs = [
-        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1492117901/opei_2_aayjbd.jpg',
-        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0943_auz3o4.jpg',
-        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0964_bs3zo8.jpg',
-        //     'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_1070_roed5s.jpg',
-        // ];
-
-        //alert(imgs);
+    render(): JSX.Element | null | false {
         const { imgs } = this.props;
-
         return (
             <div>
                 <div style={styles.overflow}> 
                     <img src={logo} className="App-logo" alt=""/>
                     <ViewPager index={`${this.state.index}`}>
-                        {imgs.map((value, index): React.ReactNode => (
+                        {imgs.map((value: string, index: number): React.ReactNode => (
                             <img 
                                 key={index} 
                                 style={{

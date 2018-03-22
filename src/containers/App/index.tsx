@@ -5,6 +5,7 @@ import About from '../../containers/About';
 import Footer from '../../containers/Footer';
 import Events from '../../containers/Events';
 import Contact from '../../containers/Contact';
+import Sponsors from '../../containers/Sponsors';
 import { AppBar, FlatButton } from 'material-ui';
 import { getMuiTheme, MuiThemeProvider, colors } from 'material-ui/styles';
 
@@ -26,12 +27,44 @@ const styles: {
         backgroundColor: 'transparent',
         color: 'white',
         marginTop: '10px',
-    }
+    },
 };
 
-const logo = require('../../assets/opeisquare.png');
+interface S {
+    url: string;
+    width: number;
+    height: number;
+}
 
-class App extends React.Component {
+const logo = require('../../assets/logo.svg');
+const logoSquare = require('../../assets/opeisquare.png');
+
+class App extends React.Component<{}, S> {
+    constructor(props: {}) {
+        super(props);
+
+        this.state = {
+            url: window.innerWidth < 850 ? logoSquare : logo,
+            width: window.innerWidth < 850 ? 48 : 172,
+            height: 48,
+        };
+    }
+
+    updateLogo = () => {
+        this.setState({
+            url: window.innerWidth < 850 ? logoSquare : logo,
+            width: window.innerWidth < 850 ? 48 : 172,
+        });
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.updateLogo);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateLogo);
+    }
+    
     render() {
         const imgs = [
             'https://res.cloudinary.com/dkbuneg9h/image/upload/v1492117901/opei_2_aayjbd.jpg',
@@ -39,6 +72,7 @@ class App extends React.Component {
             'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_0964_bs3zo8.jpg',
             'https://res.cloudinary.com/dkbuneg9h/image/upload/v1521318977/IMG_1070_roed5s.jpg',
         ];
+
         return (
             <div className="App">
                 <MuiThemeProvider muiTheme={getMuiTheme(muitheme)}>
@@ -48,10 +82,12 @@ class App extends React.Component {
                             position: 'fixed',
                         }}
                         iconElementLeft={
-                            <img src={logo} width={48} height={48}/>}
+                            <img src={this.state.url} width={this.state.width} height={this.state.height}/>}
                         iconStyleLeft={{
-                            height: '56px',
-                            width: '56px',
+                            height: `url(${this.state.height + 8})`,
+                            width: `url(${this.state.width + 8})`,
+                            marginTop: 10,
+                            marginBottom: 10,
                         }}
                     >
                         <FlatButton href="#about" label="Sobre" style={styles.buttonStyle}/>
@@ -63,6 +99,7 @@ class App extends React.Component {
                 <About />
                 <Events />
                 <Contact />
+                <Sponsors />
                 <Footer />
             </div>
         );

@@ -15,7 +15,7 @@ class Footer extends React.Component {
                                     marginBottom: 10,
                                 }}
                             >
-                                &lsaquo;&rsaquo; Made by PET-Informática 
+                                © 2018 OPEI - Todos os direitos reservados 
                             </div> 
                         </div>
                         <div className="w3-col w3-container m4 l4"/>
